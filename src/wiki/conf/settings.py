@@ -19,7 +19,8 @@ WIKI_LANGUAGE = 'markdown'
 EDITOR = getattr(
     django_settings,
     'WIKI_EDITOR',
-    'wiki.editors.markitup.MarkItUp')
+    'wiki.editors.simplemde.SimpleMDE')
+    #'wiki.editors.markitup.MarkItUp')
 
 #: Whether to use Bleach or not. It's not recommended to turn this off unless
 #: you know what you're doing and you don't want to use the other options.
@@ -207,7 +208,7 @@ CAN_MODERATE = getattr(django_settings, 'WIKI_CAN_MODERATE', None)
 CAN_ADMIN = getattr(django_settings, 'WIKI_CAN_ADMIN', None)
 
 #: Treat anonymous (i.e. non logged in) users as the "other" user group.
-ANONYMOUS = getattr(django_settings, 'WIKI_ANONYMOUS', True)
+ANONYMOUS = getattr(django_settings, 'WIKI_ANONYMOUS', False)
 
 #: Globally enable write access for anonymous users, if true anonymous users
 #: will be treated as the others_write boolean field on models.Article.
@@ -231,7 +232,7 @@ ACCOUNT_HANDLING = getattr(django_settings, 'WIKI_ACCOUNT_HANDLING', True)
 #: Signup allowed? If it's not allowed, logged in superusers can still access
 #: the signup page to create new users.
 ACCOUNT_SIGNUP_ALLOWED = ACCOUNT_HANDLING and getattr(
-    django_settings, 'WIKI_ACCOUNT_SIGNUP_ALLOWED', True
+    django_settings, 'WIKI_ACCOUNT_SIGNUP_ALLOWED', False
 )
 
 if ACCOUNT_HANDLING:
